@@ -1,0 +1,76 @@
+i)
+   
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class person {
+private:
+    int age;
+    string firstname;
+    string lastname;
+public:
+    person(int a, string fn, string ln) {
+        age = a;
+        firstname = fn;
+        lastname = ln;
+    }
+    void getValues() {
+        cout << "Age: " << age << endl;
+        cout << "First name: " << firstname << endl;
+        cout << "Last name: " << lastname << endl;
+    }
+    void setValues(int a, string fn, string ln) {
+        age = a;
+        firstname = fn;
+        lastname = ln;
+    }
+};
+
+int main() {
+    person p(25, "Thomas", "Mwenda");
+    p.getValues();
+
+    p.setValues(30, "Paul", "Bett");
+    p.getValues();
+
+    return 0;
+}
+
+ii)
+   
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student : public Person {
+  private:
+    string institution;
+    int year;
+    int registrationNumber;
+
+  public:
+    // Constructor to initialize all class data members
+    Student(int a, string fn, string ln, string inst, int y, int reg) : Person(a, fn, ln) {
+      institution = inst;
+      year = y;
+      registrationNumber = reg;
+    }
+
+    // Method to get the values of the class data members
+    void getValues() {
+      Person::getValues(); // Call the base class method to get person details
+      cout << "Institution: " << institution << endl;
+      cout << "Year: " << year << endl;
+      cout << "Registration Number: " << registrationNumber << endl;
+    }
+
+    // Method to set the values of the class data members
+    void setValues(int a, string fn, string ln, string inst, int y, int reg) {
+      Person::setValues(a, fn, ln); // Call the base class method to set person details
+      institution = inst;
+      year = y;
+      registrationNumber = reg;
+    }
+};
