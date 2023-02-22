@@ -1,76 +1,84 @@
-i)
-   
-#include <iostream>
-#include <string>
-
+#include<iostream>
+#include<string>
 using namespace std;
 
-class person {
-private:
-    int age;
-    string firstname;
-    string lastname;
-public:
-    person(int a, string fn, string ln) {
-        age = a;
-        firstname = fn;
-        lastname = ln;
-    }
-    void getValues() {
-        cout << "Age: " << age << endl;
-        cout << "First name: " << firstname << endl;
-        cout << "Last name: " << lastname << endl;
-    }
-    void setValues(int a, string fn, string ln) {
-        age = a;
-        firstname = fn;
-        lastname = ln;
-    }
+//Person class
+class Person {
+    private:
+        int age;
+        string firstname;
+        string lastname;
+
+    public:
+        //constructor
+        Person(int age, string firstname, string lastname) {
+            this->age = age;
+            this->firstname = firstname;
+            this->lastname = lastname;
+        }
+
+        //member methods
+        void getValues() {
+            cout<<"Age: "<<age<<endl;
+            cout<<"First Name: "<<firstname<<endl;
+            cout<<"Last Name: "<<lastname<<endl;
+        }
+
+        void setValues(int age, string firstname, string lastname) {
+            this->age = age;
+            this->firstname = firstname;
+            this->lastname = lastname;
+        }
+};
+
+//Student class inheriting from Person class
+class Student: public Person {
+    private:
+        string institution;
+        int year;
+        int registrationNumber;
+
+    public:
+        //constructor
+        Student(int age, string firstname, string lastname, string institution, int year, int registrationNumber):
+            Person(age, firstname, lastname) {
+            this->institution = institution;
+            this->year = year;
+            this->registrationNumber = registrationNumber;
+        }
+
+        //member methods
+        void getValues() {
+            //calling getValues method from Person class
+            Person::getValues();
+
+            cout<<"Institution: "<<institution<<endl;
+            cout<<"Year of Study: "<<year<<endl;
+            cout<<"Registration Number: "<<registrationNumber<<endl;
+        }
+
+        void setValues(string institution, int year, int registrationNumber) {
+            this->institution = institution;
+            this->year = year;
+            this->registrationNumber = registrationNumber;
+        }
 };
 
 int main() {
-    person p(25, "Thomas", "Mwenda");
-    p.getValues();
+    //creating a Person object
+    Person p(25, "John", "Doe");
 
-    p.setValues(30, "Paul", "Bett");
-    p.getValues();
+    //creating a Student object
+    Student s(20, "Jane", "Doe", "XYZ University", 3, 123456);
+
+    //getting values for Student object
+    s.getValues();
+
+    //setting values for Student object
+    s.setValues("ABC University", 2, 654321);
+
+    //getting values for Student object after setting new values
+    s.getValues();
 
     return 0;
 }
-
-ii)
-   
-#include <iostream>
-#include <string>
-using namespace std;
-
-class Student : public Person {
-  private:
-    string institution;
-    int year;
-    int registrationNumber;
-
-  public:
-    // Constructor to initialize all class data members
-    Student(int a, string fn, string ln, string inst, int y, int reg) : Person(a, fn, ln) {
-      institution = inst;
-      year = y;
-      registrationNumber = reg;
-    }
-
-    // Method to get the values of the class data members
-    void getValues() {
-      Person::getValues(); // Call the base class method to get person details
-      cout << "Institution: " << institution << endl;
-      cout << "Year: " << year << endl;
-      cout << "Registration Number: " << registrationNumber << endl;
-    }
-
-    // Method to set the values of the class data members
-    void setValues(int a, string fn, string ln, string inst, int y, int reg) {
-      Person::setValues(a, fn, ln); // Call the base class method to set person details
-      institution = inst;
-      year = y;
-      registrationNumber = reg;
-    }
-};
