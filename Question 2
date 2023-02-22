@@ -66,19 +66,20 @@ class Student: public Person {
 
 int main() {
     //creating a Person object
-    Person p(25, "John", "Doe");
+    Person p(22, "Thomas", "Mwenda");
 
     //creating a Student object
-    Student s(20, "Jane", "Doe", "XYZ University", 3, 123456);
+    Student s(22, "Fred", "Kitonga", "Jomo Kenyatta University", 3, -0010/2020);
 
     //getting values for Student object
     s.getValues();
 
     //setting values for Student object
-    s.setValues("ABC University", 2, 654321);
+    s.setValues("Jomo Kenyatta University", 3, -000-8/2020);
 
     //getting values for Student object after setting new values
     s.getValues();
 
     return 0;
 }
+
