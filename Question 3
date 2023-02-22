@@ -1,0 +1,49 @@
+i)
+Inheritance in C++ can be used in modeling the relationships between different types of students in the scenario given. For example, all students have some basic details such as name, age, and contact information. We can create a base class called "Student" that contains these common details.
+
+Then, we can create derived classes for each type of student, such as "ICTStudent", "LawStudent", and "BusinessStudent". These classes will inherit the basic details from the Student class and also have additional details specific to each type of student.
+
+Further, the BSC-IT course has three stages: Stage 1, Stage 2 and Stage 3. We can create another base class called "BSCITStudent" that inherits from the "ICTStudent" class and adds additional details specific to BSC-IT students, such as the stage of the course they are in.
+
+ii)
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student {
+  public:
+    string name;
+    int age;
+    string contactInfo;
+};
+
+class ICTStudent : public Student {
+  public:
+    string programName;
+};
+
+class BSCITStudent : public ICTStudent {
+  public:
+    int stage;
+};
+
+int main() {
+  BSCITStudent student1;
+  
+  // Set student details
+  student1.name = "Thomas mwenda";
+  student1.age = 20;
+  student1.contactInfo = "tomwenda@email.com";
+  student1.programName = "BSC-IT";
+  student1.stage = 2;
+
+  // Print student details
+  cout << "Name: " << student1.name << endl;
+  cout << "Age: " << student1.age << endl;
+  cout << "Contact Info: " << student1.contactInfo << endl;
+  cout << "Program Name: " << student1.programName << endl;
+  cout << "Stage: " << student1.stage << endl;
+
+  return 0;
+}
