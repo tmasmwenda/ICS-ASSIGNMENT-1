@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class computer {
+   protected:
+    string brand;
+    int storage;
+    int memory;
+
+   public:
+    void setBrand(string b) {
+        brand = b;
+    }
+    void setStorage(int s) {
+        storage = s;
+    }
+    void setMemory(int m) {
+        memory = m;
+    }
+};
+
+// Derived class 1
+class client : public computer {
+   private:
+    int numUsers;
+
+   public:
+    void setNumUsers(int n) {
+        numUsers = n;
+    }
+    void displayClientInfo() {
+        cout << "Client computer brand: " << brand << endl;
+        cout << "Client computer storage: " << storage << "GB" << endl;
+        cout << "Client computer memory: " << memory << "GB" << endl;
+        cout << "Number of users: " << numUsers << endl;
+    }
+};
+
+// Derived class 2
+class server : public computer {
+   private:
+    int numConnections;
+
+   public:
+    void setNumConnections(int n) {
+        numConnections = n;
+    }
+    void displayServerInfo() {
+        cout << "Server computer brand: " << brand << endl;
+        cout << "Server computer storage: " << storage << "GB" << endl;
+        cout << "Server computer memory: " << memory << "GB" << endl;
+        cout << "Number of connections: " << numConnections << endl;
+    }
+};
+
+int main() {
+    client myClient;
+    myClient.setBrand("Dell");
+    myClient.setStorage(512);
+    myClient.setMemory(16);
+    myClient.setNumUsers(5);
+    myClient.displayClientInfo();
+
+    server myServer;
+    myServer.setBrand("HP");
+    myServer.setStorage(2048);
+    myServer.setMemory(64);
+    myServer.setNumConnections(100);
+    myServer.displayServerInfo();
+
+    return 0;
+}
